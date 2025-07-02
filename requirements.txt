@@ -1,0 +1,6 @@
+Flask
+Flask-CORS
+openai
+langchain
+langchain-openai
+gunicorn
