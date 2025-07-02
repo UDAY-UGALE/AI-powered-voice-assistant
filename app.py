@@ -21,7 +21,7 @@ CORS(app)  # Enable CORS for all routes
 
 # Configuration
 class Config:
-    OPENAI_API_KEY = os.getenv('OPENAI_API_KEY', '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')
+    OPENAI_API_KEY = os.getenv('OPENAI_API_KEY', 'your_api_key')
     DATABASE_PATH = 'conversations.db'
     MAX_HISTORY_LENGTH = 10
 
