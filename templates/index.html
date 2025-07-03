@@ -239,7 +239,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>🎤CRYSTAL GROUP AI Voice Assistant</h1>
+            <h1>🎤 AI Voice Assistant</h1>
             <div class="status" id="status">Ready to listen...</div>
             <div class="voice-visualizer">
                 <div class="voice-wave" id="voiceWave"></div>
@@ -250,7 +250,7 @@
             <div class="message assistant">
                 <div class="message-avatar">🤖</div>
                 <div class="message-content">
-                    Hello! I'm your CRYSTAL GROUP AI voice assistant. Click the microphone button and speak to me. I'll listen to your voice and respond back with voice as well!
+                    Hello! I'm your AI voice assistant. Click the microphone button and speak to me. I'll listen to your voice and respond back with voice as well!
                 </div>
             </div>
         </div>
@@ -403,24 +403,20 @@
             }
 
             speakText(text) {
-                // Stop any current speech
                 this.synthesis.cancel();
-                
+
                 this.currentUtterance = new SpeechSynthesisUtterance(text);
                 this.currentUtterance.rate = 0.9;
                 this.currentUtterance.pitch = 1;
                 this.currentUtterance.volume = 1;
 
-                // Try to use a more natural voice
+                // Always use the "Emma" voice if available
                 const voices = this.synthesis.getVoices();
-                const preferredVoice = voices.find(voice => 
-                    voice.name.includes('Natural') || 
-                    voice.name.includes('Enhanced') ||
-                    voice.name.includes('Premium')
-                ) || voices.find(voice => voice.lang.startsWith('en'));
-                
-                if (preferredVoice) {
-                    this.currentUtterance.voice = preferredVoice;
+                const emmaVoice = voices.find(voice =>
+                    voice.name.toLowerCase().includes('emma')
+                );
+                if (emmaVoice) {
+                    this.currentUtterance.voice = emmaVoice;
                 }
 
                 this.currentUtterance.onstart = () => {
